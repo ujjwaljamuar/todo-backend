@@ -1,17 +1,10 @@
-import { User } from "../models/user.js";
-import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
-export const isAuthenticated = async (req, res, next) => {
-  const { token } = req.cookies;
-
-  if (!token)
-    return res.status(404).json({
-      success: false,
-      message: "Login First",
-    });
-
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-  req.user = await User.findById(decoded._id);
-  next();
+export const connectDB = () => {
+  mongoose
+    .connect(process.env.mongoURI, {
+      dbName: "todoBackend",
+    })
+    .then((c) => console.log(`Database Connected with ${c.connection.host}`))
+    .catch((e) => console.log(e));
 };
