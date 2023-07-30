@@ -7,7 +7,7 @@
             "src": "/(.*)",
             "dest": "/server.js",
             "headers": {
-                "Access-Control-Allow-Origin": "https://todo-frontend-ujjwaljamuar.vercel.app",
+                "Access-Control-Allow-Origin": "https://todo-frontend-ujjwaljamuar.vercel.app/login",
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
             }
         }
